@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // 使用 marked 渲染
             if (typeof marked !== 'undefined') {
                 diaryContent.innerHTML = marked.parse(markdown);
+                // 触发 Prism 语法高亮
+                setTimeout(() => {
+                    if (typeof Prism !== 'undefined') {
+                        Prism.highlightAll();
+                    }
+                }, 0);
             } else {
                 // fallback: 简单处理
                 diaryContent.innerHTML = `<pre>${markdown}</pre>`;

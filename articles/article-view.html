@@ -54,7 +54,7 @@
         if (!slug) {
             document.getElementById('article-content').innerHTML = '<p>请提供文章参数，例如 ?article=soul-guide</p>';
         } else {
-            fetch(`articles/${slug}.md`)
+            fetch(`./${slug}.md`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`未找到文章: ${slug}`);
@@ -64,10 +64,12 @@
                 .then(markdown => {
                     if (typeof marked !== 'undefined') {
                         document.getElementById('article-content').innerHTML = marked.parse(markdown);
-                        // 触发 Prism 高亮
-                        if (typeof Prism !== 'undefined') {
-                            Prism.highlightAll();
-                        }
+                        // 触发 Prism 高亮（延迟一点确保 DOM 渲染完成）
+                        setTimeout(() => {
+                            if (typeof Prism !== 'undefined') {
+                                Prism.highlightAll();
+                            }
+                        }, 0);
                     } else {
                         document.getElementById('article-content').innerHTML = `<pre>${markdown}</pre>`;
                     }
