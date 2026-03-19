@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 加载最新日记（用于首页）
 async function loadLatestDiary() {
+    const carousel = document.getElementById('diary-carousel');
+    if (!carousel) return;
+
     try {
         const response = await fetch('diary/data.json');
         if (!response.ok) {
@@ -46,16 +49,24 @@ async function loadLatestDiary() {
         }
         const data = await response.json();
         if (data.diaries && data.diaries.length > 0) {
-            const latest = data.diaries[0];
-            const diaryCard = document.querySelector('.diary-card');
-            if (diaryCard) {
-                diaryCard.querySelector('.date').textContent = formatDate(latest.date);
-                diaryCard.querySelector('.diary-title').textContent = latest.title;
-                diaryCard.querySelector('.diary-preview').textContent = latest.content.substring(0, 150) + '...';
-            }
+            // 只显示最近 4 篇
+            const recent = data.diaries.slice(0, 4);
+            let html = '';
+            recent.forEach(diary => {
+                html += `
+                    <div class="diary-card">
+                        <span class="day">Day ${diary.title.match(/Day (\d+)/)?.[1] || '?'}</span>
+                        <h3>${diary.title.replace(/^# Day \d+ · /, '')}</h3>
+                        <p>${diary.content.substring(0, 120)}...</p>
+                        <a href="diary-view.html?date=${diary.date}" class="link">阅读全文 →</a>
+                    </div>
+                `;
+            });
+            carousel.innerHTML = html;
         }
     } catch (e) {
         console.log('No diary data yet');
+        carousel.innerHTML = '<div class="diary-card"><span class="day">Day 1</span><h3>实验开始</h3><p>小小正式启动，开始 AI Agent 实验记录...</p></div>';
     }
 }
 
@@ -85,7 +96,8 @@ async function loadDiaryList() {
                 <article class="diary-item">
                     <div class="diary-date">📅 ${formatDate(diary.date)}</div>
                     <h3>${diary.title}</h3>
-                    <p>${diary.content.substring(0, 200)}${diary.content.length > 200 ? '...' : ''}</p>
+                    <p>${diary.content}</p>
+                    <a href="diary-view.html?date=${diary.date}" class="btn" style="margin-top: 15px; font-size: 0.9em; padding: 8px 16px;">阅读全文 →</a>
                 </article>
             `;
         });
