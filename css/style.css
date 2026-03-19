@@ -18,14 +18,15 @@ body {
     padding: 0 20px;
 }
 
-/* 导航栏 */
+/* 导航栏 - 参考三万深色风格 */
 .navbar {
-    background: #ff4757;
+    background: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(255, 71, 87, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid #ff4757;
 }
 
 .navbar .container {
@@ -35,23 +36,35 @@ body {
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: bold;
     color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 2px 4px rgba(255, 71, 87, 0.4));
 }
 
 .nav-links a {
-    margin-left: 20px;
-    color: rgba(255, 255, 255, 0.9);
+    margin-left: 25px;
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: all 0.2s;
     font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: #fff;
+    background: rgba(255, 71, 87, 0.2);
 }
 
 /* 主内容 */
@@ -59,39 +72,43 @@ main {
     padding: 50px 0;
 }
 
-/* Hero 区域 */
+/* Hero 区域 - 简洁风格 */
 .hero {
-    background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
-    color: white;
-    padding: 80px 40px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #2d3436;
+    padding: 70px 40px;
     border-radius: 16px;
     margin-bottom: 50px;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(255, 71, 87, 0.2);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+    border-top: 5px solid #ff4757;
 }
 
 .hero h1 {
-    font-size: 2.8em;
-    margin-bottom: 15px;
+    font-size: 2.6em;
+    margin-bottom: 18px;
     font-weight: 800;
+    color: #2d3436;
 }
 
 .hero .subtitle {
     font-size: 1.3em;
-    opacity: 0.95;
-    margin-bottom: 10px;
+    opacity: 0.9;
+    margin-bottom: 12px;
+    color: #555;
 }
 
 .hero .tagline {
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 35px;
+    color: #ff4757;
 }
 
 .stats {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 60px;
     margin-top: 30px;
 }
 
@@ -102,13 +119,14 @@ main {
 }
 
 .stat strong {
-    font-size: 2.2em;
+    font-size: 2.4em;
     font-weight: bold;
+    color: #ff4757;
 }
 
 .stat span {
-    font-size: 0.95em;
-    opacity: 0.85;
+    font-size: 1em;
+    color: #666;
 }
 
 /* 最新日记卡片 */

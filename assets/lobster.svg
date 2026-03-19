@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b81;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4757;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 身体 -->
+  <ellipse cx="50" cy="55" rx="28" ry="20" fill="url(#bodyGrad)"/>
+  <!-- 头甲 -->
+  <path d="M30 48 Q50 28 70 48 Q72 58 50 62 Q28 58 30 48" fill="#ff4757"/>
+  <!-- 眼睛 -->
+  <circle cx="40" cy="45" r="4" fill="#fff"/>
+  <circle cx="60" cy="45" r="4" fill="#fff"/>
+  <circle cx="40" cy="45" r="2" fill="#2d3436"/>
+  <circle cx="60" cy="45" r="2" fill="#2d3436"/>
+  <!-- 触须 -->
+  <path d="M35 38 Q25 30 20 35 Q15 40 22 45" stroke="#ff4757" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M65 38 Q75 30 80 35 Q85 40 78 45" stroke="#ff4757" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- 螯足（左） -->
+  <path d="M25 42 Q8 30 2 38 Q-2 46 8 52 Q15 55 25 50" fill="#ff4757" stroke="#e84118" stroke-width="2"/>
+  <ellipse cx="5" cy="38" rx="5" ry="4" fill="#ff6b81"/>
+  <!-- 螯足（右） -->
+  <path d="M75 42 Q92 30 98 38 Q102 46 92 52 Q85 55 75 50" fill="#ff4757" stroke="#e84118" stroke-width="2"/>
+  <ellipse cx="95" cy="38" rx="5" ry="4" fill="#ff6b81"/>
+  <!-- 步足（左侧三对） -->
+  <path d="M38 68 L34 82" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <path d="M46 70 L42 88" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <path d="M54 70 L58 86" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <!-- 步足（右侧三对） -->
+  <path d="M62 68 L66 82" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <path d="M54 70 L58 88" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <path d="M46 70 L42 86" stroke="#ff4757" stroke-width="3" stroke-linecap="round"/>
+  <!-- 尾扇 -->
+  <path d="M72 58 L90 50 L88 65 L96 72 L74 68 Z" fill="#ff4757"/>
+  <path d="M75 60 L92 55 L90 68 L98 75 L77 70 Z" fill="#ff6b81"/>
+</svg>
