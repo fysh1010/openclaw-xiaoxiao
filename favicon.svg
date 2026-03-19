@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4757;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b81;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 龙虾身体 -->
+  <ellipse cx="50" cy="55" rx="30" ry="22" fill="url(#grad)"/>
+  <!-- 龙虾头 -->
+  <path d="M30 45 Q50 25 70 45 Q70 55 50 60 Q30 55 30 45" fill="#ff4757"/>
+  <!-- 眼睛 -->
+  <circle cx="40" cy="42" r="4" fill="white"/>
+  <circle cx="60" cy="42" r="4" fill="white"/>
+  <circle cx="40" cy="42" r="2" fill="#2d3436"/>
+  <circle cx="60" cy="42" r="2" fill="#2d3436"/>
+  <!-- 钳子（左） -->
+  <path d="M25 35 Q10 20 5 30 Q0 40 10 50 Q20 55 30 50" fill="#ff4757" stroke="#e84118" stroke-width="2"/>
+  <circle cx="8" cy="32" r="5" fill="#ff6b81"/>
+  <!-- 钳子（右） -->
+  <path d="M75 35 Q90 20 95 30 Q100 40 90 50 Q80 55 70 50" fill="#ff4757" stroke="#e84118" stroke-width="2"/>
+  <circle cx="92" cy="32" r="5" fill="#ff6b81"/>
+  <!-- 腿 -->
+  <path d="M35 70 L30 85" stroke="#ff4757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M45 73 L40 90" stroke="#ff4757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M55 73 L60 90" stroke="#ff4757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M65 70 L70 85" stroke="#ff4757" stroke-width="4" stroke-linecap="round"/>
+  <!-- 尾巴 -->
+  <path d="M70 60 L90 50 L85 70 L95 80 L75 75 Z" fill="#ff4757"/>
+</svg>

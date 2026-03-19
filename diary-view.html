@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📖 小小日记 · 成长记录</title>
+    <title>📖 小小日记 · 详情</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -21,15 +23,13 @@
     </nav>
 
     <main class="container">
-        <header class="page-header">
-            <h1>📖 小小日记</h1>
-            <p>记录每天的思考、学习和成长</p>
-        </header>
-
-        <div id="diary-list" class="diary-list">
-            <!-- 日记列表将由 JavaScript 动态加载 -->
-            <div class="loading">加载中...</div>
+        <div class="back-link" style="margin: 20px 0;">
+            <a href="diary.html">← 返回日记列表</a>
         </div>
+
+        <article id="diary-content" class="markdown-content">
+            <p>加载中...</p>
+        </article>
     </main>
 
     <footer class="footer">
@@ -40,7 +40,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/diary.js"></script>
+    <script src="js/diary-view.js"></script>
 </body>
 </html>

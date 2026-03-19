@@ -43,8 +43,8 @@ else
     echo "✅ 已提交"
 fi
 
-# 4. 推送到远程（可选）
-# echo "🚀 推送到 GitHub..."
-# git push origin master
+# 4. 推送到远程
+echo "🚀 推送到 GitHub..."
+git push origin master
 
 echo "🎉 网站更新完成！"
