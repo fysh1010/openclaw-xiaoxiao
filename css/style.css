@@ -37,15 +37,15 @@ body {
     padding: 0 24px;
 }
 
-/* 导航栏 */
+/* 导航栏 - 纯白风格 */
 .navbar {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: #FFFFFF;
     border-bottom: 1px solid var(--border);
     padding: 16px 0;
     z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 .navbar .container {
@@ -126,12 +126,15 @@ main {
     gap: 10px;
 }
 
-/* Hero 区域 */
+/* Hero 区域 - 纯白背景，清晰可读 */
 .hero {
+    background: #FFFFFF;
+    border: 2px solid var(--border);
+    border-radius: 16px;
     text-align: center;
-    padding: 80px 0 60px;
-    border-bottom: 1px solid var(--border);
+    padding: 80px 40px;
     margin-bottom: 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .hero h1 {
