@@ -230,8 +230,8 @@
                 </div>
             `;
         } else {
-            // 使用绝对路径确保正确加载
-            const mdUrl = `./${slug}.md`;
+            // 使用正确的相对路径加载文章 Markdown 文件
+            const mdUrl = `./articles/${slug}.md`;
             
             fetch(mdUrl)
                 .then(response => {
