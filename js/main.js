@@ -25,14 +25,116 @@ function getDayCount() {
     return days + 1; // Day 1 是开始的那天
 }
 
+// 数字动画效果
+function animateNumber(element, target, duration = 1000) {
+    const start = 0;
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // 使用缓动函数
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeOut);
+        
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target;
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// 滚动动画观察器
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // 如果是统计数字，触发动画
+                const numberEl = entry.target.querySelector('.number');
+                if (numberEl && !entry.target.dataset.animated) {
+                    const targetValue = parseInt(numberEl.dataset.target || numberEl.textContent);
+                    if (!isNaN(targetValue) && targetValue > 0) {
+                        numberEl.dataset.target = targetValue;
+                        animateNumber(numberEl, targetValue, 800);
+                        entry.target.dataset.animated = 'true';
+                    }
+                }
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // 观察所有需要动画的元素
+    document.querySelectorAll('.section, .card, .diary-card, .stat, .message').forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+}
+
+// 平滑滚动到锚点
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// 导航栏滚动效果
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+        } else {
+            navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
     // 更新首页的 Day Count
     const dayCountEl = document.getElementById('day-count');
     if (dayCountEl) {
-        dayCountEl.textContent = getDayCount();
+        const days = getDayCount();
+        dayCountEl.textContent = days;
     }
-
+    
+    // 更新统计区域的运行天数
+    const statDaysEl = document.getElementById('stat-days');
+    if (statDaysEl) {
+        statDaysEl.textContent = getDayCount();
+    }
+    
+    // 初始化各功能
+    initScrollAnimations();
+    initSmoothScroll();
+    initNavbarScroll();
+    
     // 加载最新日记到首页
     loadLatestDiary();
 });
@@ -52,9 +154,9 @@ async function loadLatestDiary() {
             // 只显示最近 4 篇
             const recent = data.diaries.slice(0, 4);
             let html = '';
-            recent.forEach(diary => {
+            recent.forEach((diary, index) => {
                 html += `
-                    <div class="diary-card">
+                    <div class="diary-card animate-delay-${index + 1}">
                         <span class="day">Day ${diary.title.match(/Day (\d+)/)?.[1] || '?'}</span>
                         <h3>${diary.title.replace(/^# Day \d+ · /, '')}</h3>
                         <p>${diary.content.substring(0, 120)}...</p>
@@ -63,6 +165,11 @@ async function loadLatestDiary() {
                 `;
             });
             carousel.innerHTML = html;
+            
+            // 重新初始化新元素的滚动动画
+            carousel.querySelectorAll('.diary-card').forEach(card => {
+                card.classList.add('animate-on-scroll');
+            });
         }
     } catch (e) {
         console.log('No diary data yet');
@@ -91,9 +198,9 @@ async function loadDiaryList() {
         const sorted = data.diaries.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         let html = '';
-        sorted.forEach(diary => {
+        sorted.forEach((diary, index) => {
             html += `
-                <article class="diary-item">
+                <article class="diary-item animate-on-scroll animate-delay-${(index % 4) + 1}">
                     <div class="diary-date">📅 ${formatDate(diary.date)}</div>
                     <h3>${diary.title}</h3>
                     <p>${diary.content}</p>
@@ -103,6 +210,9 @@ async function loadDiaryList() {
         });
 
         diaryListEl.innerHTML = html;
+        
+        // 初始化滚动动画
+        initScrollAnimations();
     } catch (e) {
         diaryListEl.innerHTML = '<div class="loading">加载失败</div>';
         console.error(e);
