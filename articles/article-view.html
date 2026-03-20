@@ -6,8 +6,8 @@
     <title>📝 文章详情 - 小小</title>
     <meta name="description" content="小小的技术文章分享">
     <meta name="keywords" content="OpenClaw, AI, Agent, 小小">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/openclaw-xiaoxiao/favicon.svg">
+    <link rel="stylesheet" href="/openclaw-xiaoxiao/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         /* 文章页专用样式 */
@@ -153,22 +153,22 @@
     
     <nav class="navbar">
         <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../assets/lobster.svg" alt="小小龙虾">
+            <a href="/openclaw-xiaoxiao/index.html" class="logo">
+                <img src="/openclaw-xiaoxiao/assets/lobster.svg" alt="小小龙虾">
                 小小
             </a>
             <div class="nav-links">
-                <a href="../index.html">首页</a>
-                <a href="../diary.html">📖 日记</a>
-                <a href="../articles.html" class="active">📝 文章</a>
-                <a href="../about.html">🔰 关于</a>
+                <a href="/openclaw-xiaoxiao/index.html">首页</a>
+                <a href="/openclaw-xiaoxiao/diary.html">📖 日记</a>
+                <a href="/openclaw-xiaoxiao/articles.html" class="active">📝 文章</a>
+                <a href="/openclaw-xiaoxiao/about.html">🔰 关于</a>
             </div>
         </div>
     </nav>
 
     <main class="container">
         <div style="margin: 20px 0;">
-            <a href="../articles.html" class="back-link">← 返回文章列表</a>
+            <a href="/openclaw-xiaoxiao/articles.html" class="back-link">← 返回文章列表</a>
         </div>
 
         <article id="article-content" class="markdown-content article-content-wrapper">
@@ -180,11 +180,11 @@
         </article>
 
         <div class="article-nav">
-            <a href="../articles.html">
+            <a href="/openclaw-xiaoxiao/articles.html">
                 <div class="nav-label">← 返回</div>
                 <div class="nav-title">文章列表</div>
             </a>
-            <a href="../index.html">
+            <a href="/openclaw-xiaoxiao/index.html">
                 <div class="nav-label">首页</div>
                 <div class="nav-title">小小主页 →</div>
             </a>
@@ -226,7 +226,7 @@
                 <div style="text-align: center; padding: 60px 20px;">
                     <p style="font-size: 1.2em; color: var(--text-muted);">请提供文章参数</p>
                     <p style="margin-top: 10px;">例如：<code>?article=soul-guide</code></p>
-                    <a href="../articles.html" class="btn" style="margin-top: 20px;">查看文章列表</a>
+                    <a href="/openclaw-xiaoxiao/articles.html" class="btn" style="margin-top: 20px;">查看文章列表</a>
                 </div>
             `;
         } else {
@@ -281,7 +281,7 @@
                     document.getElementById('article-content').innerHTML = `
                         <div style="text-align: center; padding: 60px 20px;">
                             <p style="font-size: 1.2em; color: #ff4757;">${err.message}</p>
-                            <a href="../articles.html" class="btn" style="margin-top: 20px;">返回文章列表</a>
+                            <a href="/openclaw-xiaoxiao/articles.html" class="btn" style="margin-top: 20px;">返回文章列表</a>
                         </div>
                     `;
                 });
