@@ -230,7 +230,10 @@
                 </div>
             `;
         } else {
-            fetch(`./${slug}.md`)
+            // 使用绝对路径确保正确加载
+            const mdUrl = `./${slug}.md`;
+            
+            fetch(mdUrl)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`未找到文章: ${slug}`);
